@@ -3,34 +3,15 @@ package ru.yandex.practicum.gym;
 import java.util.Objects;
 
 public class TimeOfDay implements Comparable<TimeOfDay> {
-
-    //часы (от 0 до 23)
-    private int hours;
-    //минуты (от 0 до 59)
-    private int minutes;
+    private final int hours;
+    private final int minutes;
 
     public TimeOfDay(int hours, int minutes) {
+        if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+            throw new IllegalArgumentException("Hours: 0..23; minutes: 0..59");
+        }
         this.hours = hours;
         this.minutes = minutes;
-    }
-
-    @Override
-    public int compareTo(TimeOfDay o) {
-        if (hours != o.hours) return hours - o.hours;
-        return minutes - o.minutes;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TimeOfDay timeOfDay = (TimeOfDay) o;
-        return hours == timeOfDay.hours && minutes == timeOfDay.minutes;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(hours, minutes);
     }
 
     public int getHours() {
@@ -39,5 +20,33 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
 
     public int getMinutes() {
         return minutes;
+    }
+
+    @Override
+    public int compareTo(TimeOfDay other) {
+        int result = Integer.compare(hours, other.hours);
+        return result != 0 ? result : Integer.compare(minutes, other.minutes);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        TimeOfDay time = (TimeOfDay) other;
+        return hours == time.hours && minutes == time.minutes;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hours, minutes);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d", hours, minutes);
     }
 }

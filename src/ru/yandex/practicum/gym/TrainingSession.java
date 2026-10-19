@@ -1,21 +1,18 @@
 package ru.yandex.practicum.gym;
 
-public class TrainingSession {
+import java.util.Objects;
 
-    //группа
-    private Group group;
-    //тренер
-    private Coach coach;
-    //день недели
-    private DayOfWeek dayOfWeek;
-    //время начала занятия
-    private TimeOfDay timeOfDay;
+public class TrainingSession {
+    private final Group group;
+    private final Coach coach;
+    private final DayOfWeek dayOfWeek;
+    private final TimeOfDay timeOfDay;
 
     public TrainingSession(Group group, Coach coach, DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
-        this.group = group;
-        this.coach = coach;
-        this.dayOfWeek = dayOfWeek;
-        this.timeOfDay = timeOfDay;
+        this.group = Objects.requireNonNull(group, "group");
+        this.coach = Objects.requireNonNull(coach, "coach");
+        this.dayOfWeek = Objects.requireNonNull(dayOfWeek, "dayOfWeek");
+        this.timeOfDay = Objects.requireNonNull(timeOfDay, "timeOfDay");
     }
 
     public Group getGroup() {
