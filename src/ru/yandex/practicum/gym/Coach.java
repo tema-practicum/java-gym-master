@@ -13,14 +13,26 @@ public class Coach {
         this.middleName = Objects.requireNonNull(middleName, "middleName");
     }
 
-    public String getSurname() { return surname; }
-    public String getName() { return name; }
-    public String getMiddleName() { return middleName; }
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
 
     @Override
     public boolean equals(Object other) {
-        if (this == other) { return true; }
-        if (other == null || getClass() != other.getClass()) { return false; }
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
         Coach coach = (Coach) other;
         return surname.equals(coach.surname)
                 && name.equals(coach.name) && middleName.equals(coach.middleName);

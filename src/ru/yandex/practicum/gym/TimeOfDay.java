@@ -14,8 +14,13 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
         this.minutes = minutes;
     }
 
-    public int getHours() { return hours; }
-    public int getMinutes() { return minutes; }
+    public int getHours() {
+        return hours;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
 
     @Override
     public int compareTo(TimeOfDay other) {
@@ -25,15 +30,23 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
 
     @Override
     public boolean equals(Object other) {
-        if (this == other) { return true; }
-        if (other == null || getClass() != other.getClass()) { return false; }
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
         TimeOfDay time = (TimeOfDay) other;
         return hours == time.hours && minutes == time.minutes;
     }
 
     @Override
-    public int hashCode() { return Objects.hash(hours, minutes); }
+    public int hashCode() {
+        return Objects.hash(hours, minutes);
+    }
 
     @Override
-    public String toString() { return String.format("%02d:%02d", hours, minutes); }
+    public String toString() {
+        return String.format("%02d:%02d", hours, minutes);
+    }
 }
